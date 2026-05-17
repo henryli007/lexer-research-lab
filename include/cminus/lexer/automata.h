@@ -1,0 +1,68 @@
+#pragma once
+
+#include <map>
+#include <set>
+#include <string>
+#include <vector>
+
+namespace cminus {
+
+const int EPSILON = -1;
+
+struct TokenRule {
+    std::string name;
+    std::string attr;
+    int priority;
+};
+
+struct NFAEdge {
+    int to;
+    int ch;
+};
+
+struct NFAState {
+    int id;
+    std::vector<NFAEdge> edges;
+    int acceptRule;
+};
+
+struct NFAFragment {
+    int start;
+    int accept;
+};
+
+struct NFA {
+    int start;
+    std::vector<NFAState> states;
+};
+
+struct DFAState {
+    int id;
+    std::set<int> nfaStates;
+    std::map<int, int> trans;
+    int acceptRule;
+};
+
+struct DFA {
+    int start;
+    std::vector<DFAState> states;
+    std::vector<int> alphabet;
+};
+
+struct AutomataStats {
+    int nfaStates = 0;
+    int dfaStates = 0;
+    int minimizedDfaStates = 0;
+    int rules = 0;
+    int alphabetSize = 0;
+};
+
+NFA buildLexerNFA(std::vector<TokenRule>& rules);
+DFA nfaToDfa(const NFA& nfa, const std::vector<TokenRule>& rules);
+DFA minimizeDfa(const DFA& dfa, const std::vector<TokenRule>& rules);
+
+const DFA& getMinimizedDFA();
+const std::vector<TokenRule>& getTokenRules();
+AutomataStats getAutomataStats();
+
+} // namespace cminus

@@ -1,0 +1,6 @@
+int main() {
+    int a = 12abc;
+    float b = 1.;
+    float c = 1..2;
+    return a;
+}

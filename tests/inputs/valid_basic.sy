@@ -1,0 +1,12 @@
+const int LIMIT = 100;
+float ratio = 3.14;
+
+int main() {
+    int value = LIMIT + 2;
+    float sum = ratio * 2.0;
+    if (value >= 10 && sum != 0.0) {
+        return value;
+    } else {
+        return 0;
+    }
+}

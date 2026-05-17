@@ -1,0 +1,9 @@
+// line comment before declarations
+const int a = 1;
+/* block comment
+   across lines
+*/
+int main() {
+    int value = a + 2; // trailing line comment
+    /* inline block comment */ return value;
+}
