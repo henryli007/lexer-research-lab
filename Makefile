@@ -12,9 +12,23 @@ LEXER_SRCS := \
     src/lexer/lexer.cpp \
     src/lexer/automata.cpp
 
-.PHONY: all run clean
+.PHONY: all baseline derivative incremental fuzz automata-viz benchmark figures run clean
 
-all: $(LEXER_BIN)
+all: baseline derivative incremental fuzz automata-viz
+baseline: $(LEXER_BIN)
+derivative:
+	python scripts/build.py derivative
+incremental:
+	python scripts/build.py incremental
+fuzz:
+	python scripts/build.py fuzz
+automata-viz:
+	python scripts/build.py automata-viz
+	python scripts/build.py automata-stats
+benchmark:
+	python benchmarks/scripts/run_all_benchmarks.py
+figures:
+	python scripts/plot_paper_figures.py
 
 $(BUILD_DIR):
 	if (-not (Test-Path '$(BUILD_DIR)')) { New-Item -ItemType Directory '$(BUILD_DIR)' | Out-Null }

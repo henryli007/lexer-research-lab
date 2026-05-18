@@ -1,0 +1,4 @@
+automaton,states,edges,accept_states,rules,alphabet_size
+NFA,151,334,0,33,81
+DFA,66,2574,62,33,81
+MinDFA,65,2511,61,33,81

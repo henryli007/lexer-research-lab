@@ -62,7 +62,12 @@ DFA nfaToDfa(const NFA& nfa, const std::vector<TokenRule>& rules);
 DFA minimizeDfa(const DFA& dfa, const std::vector<TokenRule>& rules);
 
 const DFA& getMinimizedDFA();
+const NFA& getLexerNFA();
+const DFA& getLexerDFA();
 const std::vector<TokenRule>& getTokenRules();
 AutomataStats getAutomataStats();
+bool exportNfaDot(const std::string& path);
+bool exportDfaDot(const std::string& path);
+bool exportMinDfaDot(const std::string& path);
 
 } // namespace cminus

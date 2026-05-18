@@ -2,8 +2,10 @@
 
 #include <algorithm>
 #include <cstddef>
+#include <fstream>
 #include <map>
 #include <queue>
+#include <sstream>
 
 namespace cminus {
 
@@ -238,6 +240,68 @@ void ensureBuilt() {
     }
 }
 
+std::string dotLabel(int ch) {
+    if (ch == EPSILON) {
+        return "eps";
+    }
+    if (ch == '"') {
+        return "\\\"";
+    }
+    if (ch == '\\') {
+        return "\\\\";
+    }
+    if (ch == '\n') {
+        return "\\n";
+    }
+    if (ch == '\t') {
+        return "\\t";
+    }
+    if (ch >= 32 && ch <= 126) {
+        return std::string(1, (char)ch);
+    }
+    std::ostringstream out;
+    out << ch;
+    return out.str();
+}
+
+bool writeNfaDot(const NFA& nfa, const std::string& path) {
+    std::ofstream out(path.c_str());
+    if (!out) return false;
+    out << "digraph NFA {\nrankdir=LR;\n";
+    out << "start [shape=point];\nstart -> " << nfa.start << ";\n";
+    for (size_t i = 0; i < nfa.states.size(); ++i) {
+        out << nfa.states[i].id << " [shape=" << (nfa.states[i].acceptRule >= 0 ? "doublecircle" : "circle")
+            << ",label=\"" << nfa.states[i].id;
+        if (nfa.states[i].acceptRule >= 0) out << "/r" << nfa.states[i].acceptRule;
+        out << "\"];\n";
+        for (size_t j = 0; j < nfa.states[i].edges.size(); ++j) {
+            out << nfa.states[i].id << " -> " << nfa.states[i].edges[j].to
+                << " [label=\"" << dotLabel(nfa.states[i].edges[j].ch) << "\"];\n";
+        }
+    }
+    out << "}\n";
+    return true;
+}
+
+bool writeDfaDot(const DFA& dfa, const std::string& name, const std::string& path) {
+    std::ofstream out(path.c_str());
+    if (!out) return false;
+    out << "digraph " << name << " {\nrankdir=LR;\n";
+    out << "start [shape=point];\nstart -> " << dfa.start << ";\n";
+    for (size_t i = 0; i < dfa.states.size(); ++i) {
+        out << dfa.states[i].id << " [shape=" << (dfa.states[i].acceptRule >= 0 ? "doublecircle" : "circle")
+            << ",label=\"" << dfa.states[i].id;
+        if (dfa.states[i].acceptRule >= 0) out << "/r" << dfa.states[i].acceptRule;
+        out << "\"];\n";
+        for (std::map<int, int>::const_iterator it = dfa.states[i].trans.begin(); it != dfa.states[i].trans.end(); ++it) {
+            out << dfa.states[i].id << " -> " << it->second
+                << " [label=\"" << dotLabel(it->first) << "\"];\n";
+        }
+    }
+    out << "}\n";
+    return true;
+}
+
 } // namespace
 
 NFA buildLexerNFA(std::vector<TokenRule>& rules) {
@@ -255,6 +319,7 @@ NFA buildLexerNFA(std::vector<TokenRule>& rules) {
         {"float", "6"},
         {"if", "7"},
         {"else", "8"},
+        {"while", "9"},
         {NULL, NULL}
     };
 
@@ -496,6 +561,16 @@ const DFA& getMinimizedDFA() {
     return globalMinDFA;
 }
 
+const NFA& getLexerNFA() {
+    ensureBuilt();
+    return globalNFA;
+}
+
+const DFA& getLexerDFA() {
+    ensureBuilt();
+    return globalDFA;
+}
+
 const std::vector<TokenRule>& getTokenRules() {
     ensureBuilt();
     return globalRules;
@@ -511,6 +586,21 @@ AutomataStats getAutomataStats() {
     stats.rules = (int)globalRules.size();
     stats.alphabetSize = (int)globalMinDFA.alphabet.size();
     return stats;
+}
+
+bool exportNfaDot(const std::string& path) {
+    ensureBuilt();
+    return writeNfaDot(globalNFA, path);
+}
+
+bool exportDfaDot(const std::string& path) {
+    ensureBuilt();
+    return writeDfaDot(globalDFA, "DFA", path);
+}
+
+bool exportMinDfaDot(const std::string& path) {
+    ensureBuilt();
+    return writeDfaDot(globalMinDFA, "MinDFA", path);
 }
 
 } // namespace cminus

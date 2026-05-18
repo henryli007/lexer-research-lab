@@ -19,6 +19,13 @@
 - token line/column 记录
 - automata stats 输出
 
+## Research Methods
+- baseline NFA-DFA lexer
+- regex derivative lexer demo
+- incremental lexing experiment
+- property-based testing / fuzzing
+- automata visualization
+
 ## 目录概览
 ```text
 lexer-research-lab/
@@ -80,6 +87,11 @@ struct LexResult {
 make
 ```
 
+跨平台构建推荐：
+```bash
+python scripts/build.py all
+```
+
 ## 运行方式
 ```bash
 ./build/lexer_cli tests/inputs/valid_basic.sy
@@ -90,6 +102,22 @@ make
 LEXER_STATS=1 ./build/lexer_cli tests/inputs/valid_basic.sy
 DIAGNOSTICS_JSON=1 ./build/lexer_cli tests/inputs/invalid_unterminated_comment.sy
 ```
+
+## How to Run Experiments
+```bash
+python benchmarks/scripts/generate_corpus.py
+python scripts/build.py all
+python benchmarks/scripts/run_all_benchmarks.py
+python scripts/plot_paper_figures.py
+```
+
+## Figures
+- `fig1_lexer_throughput`: baseline vs derivative throughput
+- `fig2_automata_states`: NFA/DFA/MinDFA state counts
+- `fig3_incremental_reuse_rate`: token reuse after edits
+- `fig4_incremental_speedup`: speedup over full lexing
+- `fig5_property_failures`: fuzzing property failures
+- `fig6_diagnostics_distribution`: diagnostic mix on malformed inputs
 
 ## 后续研究方向
 - 正则表达式系数

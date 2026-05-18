@@ -1,0 +1,8 @@
+seed,cases,total_pass,total_fail,property,pass_count,fail_count
+42,1000,7000,0,CommentsInvisible,1000,0
+42,1000,7000,0,ErrorLocality,1000,0
+42,1000,7000,0,KeywordPriority,1000,0
+42,1000,7000,0,LongestMatchOperators,1000,0
+42,1000,7000,0,NoInfiniteLoop,1000,0
+42,1000,7000,0,RoundTripTokenTypeStability,1000,0
+42,1000,7000,0,TokenOffsetsMonotonic,1000,0

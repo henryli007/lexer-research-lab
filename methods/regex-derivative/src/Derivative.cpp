@@ -1,0 +1,7 @@
+#include "derivative/Derivative.h"
+#include "derivative/Simplify.h"
+namespace derivative {
+bool nullable(const RegexPtr& r){ switch(r->kind){case Kind::EmptySet:return false;case Kind::Epsilon:return true;case Kind::LiteralChar:return false;case Kind::CharClass:return false;case Kind::Concat:return nullable(r->left)&&nullable(r->right);case Kind::Alt:return nullable(r->left)||nullable(r->right);case Kind::Star:return true;} return false; }
+RegexPtr derivativeOf(const RegexPtr& r,char ch){ switch(r->kind){case Kind::EmptySet:return emptySet();case Kind::Epsilon:return emptySet();case Kind::LiteralChar:return r->literal==ch?epsilon():emptySet();case Kind::CharClass:return r->chars.count(ch)?epsilon():emptySet();case Kind::Alt:return simplify(alt(derivativeOf(r->left,ch),derivativeOf(r->right,ch)));case Kind::Concat: if(nullable(r->left)) return simplify(alt(concat(derivativeOf(r->left,ch),r->right),derivativeOf(r->right,ch))); return simplify(concat(derivativeOf(r->left,ch),r->right));case Kind::Star:return simplify(concat(derivativeOf(r->left,ch),r));} return emptySet(); }
+size_t matchPrefix(const RegexPtr& r,const std::string& input,size_t start,size_t* steps,std::set<std::string>* states){ RegexPtr cur=r; size_t best=nullable(cur)?0:(size_t)-1; for(size_t i=start;i<input.size();++i){ cur=simplify(derivativeOf(cur,input[i])); if(steps)(*steps)++; if(states)states->insert(canonical(cur)); if(cur->kind==Kind::EmptySet)break; if(nullable(cur))best=i-start+1; } return best==(size_t)-1?0:best; }
+}

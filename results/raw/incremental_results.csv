@@ -1,0 +1,4 @@
+case_name,file,input_bytes,edit_type,edit_offset,rescanned_bytes,full_bytes,reused_tokens,total_old_tokens,reuse_rate,full_lex_ms,incremental_lex_ms,speedup,equivalent_to_full
+rename_identifier_middle,D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\large.sy,1091150,replace,120,1091030,1091150,212851,212883,99.985,126.082,119.985,1.05081,true
+insert_comment_begin,D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\large.sy,1091152,insert,300,1090866,1091152,1,212882,0.000469744,15.82,0,0,true
+delete_comment_end,D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\large.sy,1091150,delete,420,1090850,1091150,0,72,0,0,15.828,0,true
