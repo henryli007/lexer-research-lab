@@ -1,2 +1,0 @@
->= while   alpha /* block hidden */ /* block hidden */ / + 123 // hidden comment
- beta_2 ; return
