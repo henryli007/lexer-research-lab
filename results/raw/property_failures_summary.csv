@@ -1,0 +1,11 @@
+property,fail_count
+CommentsInvisible,0
+DiagnosticsHaveLocation,0
+ErrorLocality,0
+KeywordPriority,0
+LongestMatchOperators,0
+NoInfiniteLoop,0
+NoParserDependency,0
+RoundTripTokenTypeStability,0
+StableUnderWhitespaceInsertion,0
+TokenOffsetsMonotonic,0

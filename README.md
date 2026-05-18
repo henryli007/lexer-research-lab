@@ -2,7 +2,7 @@
 
 从 `c--compiler` 剥离的独立词法分析实验模块，面向词法分析专题学习、实验与论文复现/扩展，避免依赖 parser、AST、IR 或 editor 主流程。
 
-## 项目定位
+## Project Goal
 - 保留 `cminus::Lexer` 公共接口，便于作为上游组件复用
 - 只关注词法规则、自动机构造、扫描与诊断，不引入 parser / AST / IR 依赖
 - 当前目录可独立编译、运行、维护与扩展
@@ -25,8 +25,13 @@
 - incremental lexing experiment
 - property-based testing / fuzzing
 - automata visualization
+- lexical modes
+- minimal TDFA-style submatch demo
+- code-driven DFA benchmark slot
+- diagnostic engine
+- roundtrip checker
 
-## 目录概览
+## Repository Layout
 ```text
 lexer-research-lab/
 |-- README.md
@@ -92,6 +97,11 @@ make
 python scripts/build.py all
 ```
 
+## Run Baseline
+```bash
+./build/lexer_cli tests/inputs/valid_basic.sy
+```
+
 ## 运行方式
 ```bash
 ./build/lexer_cli tests/inputs/valid_basic.sy
@@ -111,6 +121,9 @@ python benchmarks/scripts/run_all_benchmarks.py
 python scripts/plot_paper_figures.py
 ```
 
+## Generated Results
+`results/raw/` stores CSV/JSONL experiment outputs; `results/figures/` stores reproducible PDF/SVG plots generated only from those raw files.
+
 ## Figures
 - `fig1_lexer_throughput`: baseline vs derivative throughput
 - `fig2_automata_states`: NFA/DFA/MinDFA state counts
@@ -118,6 +131,17 @@ python scripts/plot_paper_figures.py
 - `fig4_incremental_speedup`: speedup over full lexing
 - `fig5_property_failures`: fuzzing property failures
 - `fig6_diagnostics_distribution`: diagnostic mix on malformed inputs
+- `fig7_lexical_modes_transitions`: mode activity
+- `fig8_tdfa_tag_operations`: TDFA tag work
+- `fig9_code_dfa_vs_table_dfa`: table/code encoding surface
+- `fig10_roundtrip_stability`: stream stability
+- `fig11_diagnostic_fix_hints`: fix-hint coverage
+
+## Method Limitations
+Derivative lexing remains a subset demo; incremental lexing is a conservative experimental wrapper; TDFA is intentionally toy-sized; code-driven DFA is currently a benchmark scaffold backed by the baseline, not yet an independent switch-DFA implementation; diagnostic fixes are heuristic.
+
+## No Parser / AST / IR Dependency
+The repository intentionally stops at lexical analysis. It does not depend on parser, AST, or IR components.
 
 ## 后续研究方向
 - 正则表达式系数

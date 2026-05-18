@@ -1,4 +1,13 @@
-case_name,file,input_bytes,edit_type,edit_offset,rescanned_bytes,full_bytes,reused_tokens,total_old_tokens,reuse_rate,full_lex_ms,incremental_lex_ms,speedup,equivalent_to_full
-rename_identifier_middle,D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\large.sy,1091150,replace,120,1091030,1091150,212851,212883,99.985,126.082,119.985,1.05081,true
-insert_comment_begin,D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\large.sy,1091152,insert,300,1090866,1091152,1,212882,0.000469744,15.82,0,0,true
-delete_comment_end,D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\large.sy,1091150,delete,420,1090850,1091150,0,72,0,0,15.828,0,true
+case_name,file,input_bytes,edit_type,edit_offset,edit_length,rescanned_bytes,full_bytes,reused_tokens,total_old_tokens,reuse_rate,full_lex_us,incremental_lex_us,speedup,equivalent_to_full,reason
+rename_identifier_begin,D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\medium.sy,53389,replace,4,9,53389,53389,10966,10968,99.9818,5610,6811,0.823668,true,ok
+rename_identifier_middle,D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\medium.sy,53391,replace,120,9,53271,53391,10936,10968,99.7082,6368,6662,0.955869,true,ok
+rename_identifier_end,D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\medium.sy,53388,replace,50000,9,3390,53388,686,10968,6.25456,6252,1192,5.24497,true,ok
+insert_whitespace,D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\medium.sy,53396,insert,80,0,53316,53396,0,10968,0,6706,6796,0.986757,true,ok
+delete_whitespace,D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\medium.sy,53392,delete,15,1,53392,53392,0,10968,0,6495,6334,1.02542,true,ok
+insert_line_comment,D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\medium.sy,53402,insert,180,0,53222,53402,10917,10968,99.535,5975,5876,1.01685,true,ok
+insert_block_comment_begin,D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\medium.sy,53395,insert,300,0,53107,53395,1,10968,0.00911743,1,1004,0.000996016,true,rescan diagnostics observed
+insert_block_comment_end,D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\medium.sy,53395,insert,420,0,52975,53395,10868,10968,99.0883,6983,6917,1.00954,true,ok
+delete_block_comment_end,D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\medium.sy,53391,delete,420,2,52971,53391,10867,10968,99.0791,6439,6401,1.00594,true,ok
+replace_operator_equal_to_eqeq,D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\medium.sy,53394,replace,18,1,53394,53394,10963,10968,99.9544,5528,6426,0.860255,true,ok
+malformed_number_edit,D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\medium.sy,53397,replace,20,1,53377,53397,10962,10968,99.9453,6739,6291,1.07121,true,rescan diagnostics observed
+edit_near_file_end,D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\medium.sy,53394,insert,51000,0,2409,53394,481,10968,4.38549,7243,1,7243,true,ok

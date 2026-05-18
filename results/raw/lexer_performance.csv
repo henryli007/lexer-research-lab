@@ -1,13 +1,36 @@
-method,file,input_bytes,tokens,elapsed_ms,throughput_mb_s,success
-baseline_dfa,small.sy,1073,248,487.393856048584,0.0020995187542985835,True
-regex_derivative,small.sy,1073,247,460.0050449371338,0.0022245246063415536,True
-baseline_dfa,medium.sy,53393,10968,42.693376541137695,1.1926799166801625,True
-regex_derivative,medium.sy,53393,10967,454.90264892578125,0.1119350104821803,True
-baseline_dfa,large.sy,1091152,212883,247.21026420593262,4.209386859553948,True
-regex_derivative,large.sy,1091152,212882,8670.56679725647,0.12001564165615783,True
-baseline_dfa,comments_heavy.sy,219560,20001,45.35245895385742,4.616921281450095,True
-regex_derivative,comments_heavy.sy,219560,64000,2188.504219055176,0.0956766411903715,True
-baseline_dfa,identifiers_heavy.sy,346682,60001,95.51596641540527,3.461428824605677,True
-regex_derivative,identifiers_heavy.sy,346682,60000,1945.9335803985596,0.16990390766196384,True
-baseline_dfa,malformed_mixed.sy,54,7,25.868892669677734,0.0019907467143462794,False
-regex_derivative,malformed_mixed.sy,54,0,28.746604919433594,0.0017914607039777064,False
+method,file,input_bytes,tokens,elapsed_ms,throughput_mb_s,success,error
+baseline_dfa,small.sy,1073,248,314.7296999959508,0.0032513377082527373,True,
+regex_derivative,small.sy,1073,247,406.63969999877736,0.00251646000502898,True,
+code_driven_dfa,small.sy,1073,248,11.478,0.0891525,True,
+mode_lexer,small.sy,1073,198,340.41599999181926,0.0030060060089082113,True,
+baseline_dfa,medium.sy,53393,10968,47.31310000352096,1.0762248250926183,True,
+regex_derivative,medium.sy,53393,10967,512.7064000116661,0.09931518852645546,True,
+code_driven_dfa,medium.sy,53393,10968,17.075,2.98211,True,
+mode_lexer,medium.sy,53393,8774,32.18660000129603,1.5820103016108746,True,
+baseline_dfa,large.sy,1091152,212883,260.8884999935981,3.988691098767664,True,
+regex_derivative,large.sy,1091152,212882,23062.31779999507,0.04512138141186897,True,
+code_driven_dfa,large.sy,1091152,212883,128.946,8.07007,True,
+mode_lexer,large.sy,1091152,170306,151.09450000454672,6.887104677297974,True,
+baseline_dfa,comments_heavy.sy,219560,20001,54.97620000096504,3.808716006316928,True,
+regex_derivative,comments_heavy.sy,219560,20000,846.9442000059644,0.24722848672755737,True,
+code_driven_dfa,comments_heavy.sy,219560,20001,21.305,9.82815,True,
+mode_lexer,comments_heavy.sy,219560,16000,47.814999998081475,4.379143216951955,True,
+baseline_dfa,identifiers_heavy.sy,346682,60001,100.22089999984019,3.298929857553452,True,
+regex_derivative,identifiers_heavy.sy,346682,60000,2011.287799992715,0.16438309791445516,True,
+code_driven_dfa,identifiers_heavy.sy,346682,60001,48.186,6.86136,True,
+mode_lexer,identifiers_heavy.sy,346682,10000,30.08570001111366,10.989331118711544,True,
+baseline_dfa,malformed_mixed.sy,54,7,30.851600007736124,0.001669229896440513,False,"error[LEX_MALFORMED_NUMBER] at line 2, column 1: malformed numeric literal '12abc'
+  hint: split the identifier from the number or write a complete float literal
+error[LEX_MALFORMED_NUMBER] at line 3, column 1: malformed numeric literal '1.'
+  hint: split the identifier from the number or write a complete float literal
+error[LEX_MALFORMED_NUMBER] at line 4, column 1: malformed numeric literal '1.'
+  hint: split the identifier from the number or write a complete float literal
+error[LEX_UNEXPECTED_CHAR] at line 4, column 3: unexpected character '.'
+  hint: remove this character or replace it with a valid C-- token
+error[LEX_UNEXPECTED_CHAR] at line 5, column 1: unexpected character '@'
+  hint: remove this character or replace it with a valid C-- token
+error[LEX_UNTERMINATED_COMMENT] at line 6, column 1: unterminated block comment
+  hint: add a closing */ before the end of file"
+regex_derivative,malformed_mixed.sy,54,10,29.571000006399117,0.0017415174689659912,False,
+code_driven_dfa,malformed_mixed.sy,54,7,10.319,0.00499064,False,
+mode_lexer,malformed_mixed.sy,54,7,31.948200004990213,0.0016119347280251657,True,

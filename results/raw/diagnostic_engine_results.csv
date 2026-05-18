@@ -1,0 +1,10 @@
+file,diagnostic_code,count,fix_hints,has_location,elapsed_us
+D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\methods\diagnostic-engine\examples\malformed_number.sy,LEX_MALFORMED_NUMBER,1,1,true,10240
+D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\methods\diagnostic-engine\examples\unterminated_comment.sy,LEX_UNTERMINATED_COMMENT,1,1,true,11869
+D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\methods\diagnostic-engine\examples\unexpected_char.sy,LEX_UNEXPECTED_CHAR,1,1,true,10760
+D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\methods\diagnostic-engine\examples\isolated_bang.sy,LEX_ISOLATED_BANG,1,1,true,11764
+D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\methods\diagnostic-engine\examples\invalid_operator_sequence.sy,LEX_UNEXPECTED_CHAR,1,1,true,11199
+D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\methods\diagnostic-engine\examples\invalid_operator_sequence.sy,LEX_INVALID_OPERATOR_SEQUENCE,1,1,true,11199
+D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\methods\diagnostic-engine\examples\chinese_punctuation.sy,LEX_UNEXPECTED_CHAR,1,1,true,11622
+D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\methods\diagnostic-engine\examples\chinese_punctuation.sy,LEX_UNEXPECTED_CHAR,1,1,true,11622
+D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\methods\diagnostic-engine\examples\chinese_punctuation.sy,LEX_UNEXPECTED_CHAR,1,1,true,11622

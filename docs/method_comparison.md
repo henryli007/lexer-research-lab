@@ -1,9 +1,14 @@
 # Method comparison
 
-- **NFA-DFA baseline**: production reference scanner and correctness anchor.
-- **Regex derivatives**: demonstrate direct recognition by symbolic regex evolution without constructing the same automaton pipeline.
-- **Incremental lexing**: studies editor-like updates, token reuse, and rescan scope.
-- **Property-based testing**: stresses lexer invariants over many generated inputs.
-- **Automata visualization**: exposes how NFA, DFA, and MinDFA state counts change.
-
-Current limits are intentional: the derivative lexer is a demo subset; incremental lexing uses a conservative first-pass boundary strategy; fuzzing is empirical rather than formal; visualization exports readable graphs rather than advanced layout metadata.
+| Method | Level | Solves | Strength | Limitation |
+|---|---|---|---|---|
+| baseline NFA-DFA | production baseline | reference tokenization | stable correctness anchor | table-driven only |
+| regex derivative | prototype | recognition by regex evolution | exposes symbolic state growth | subset demo, slower |
+| incremental lexing | benchmark wrapper | editor edits | reuse/rescan metrics | conservative first pass |
+| property testing | prototype | invariant discovery | finds edge cases cheaply | empirical, not proof |
+| automata visualization | prototype | explain construction | visible NFA/DFA/MinDFA shrinkage | static graphs |
+| lexical modes | prototype | context-sensitive scanning | clear state transitions | demo grammar only |
+| TDFA | toy demo | submatch extraction | shows tag operations | no generator |
+| code-driven DFA | benchmark wrapper | encoding comparison | future switch-DFA slot | currently baseline-backed |
+| diagnostic engine | prototype | explanations/fix hints | richer teaching feedback | heuristic fixes |
+| roundtrip | prototype | token-printer stability | catches stream drift | not source preservation |

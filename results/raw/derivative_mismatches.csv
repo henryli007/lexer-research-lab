@@ -1,0 +1,3 @@
+file,index,baseline_type,derivative_type,baseline_lexeme,derivative_lexeme,reason
+small.sy,247,EOF,MISSING,EOF,,type_or_lexeme_mismatch
+medium.sy,10967,EOF,MISSING,EOF,,type_or_lexeme_mismatch

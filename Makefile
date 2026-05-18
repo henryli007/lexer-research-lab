@@ -12,9 +12,9 @@ LEXER_SRCS := \
     src/lexer/lexer.cpp \
     src/lexer/automata.cpp
 
-.PHONY: all baseline derivative incremental fuzz automata-viz benchmark figures run clean
+.PHONY: all baseline derivative incremental fuzz automata-viz modes tdfa code-dfa diagnostics roundtrip benchmark figures run clean
 
-all: baseline derivative incremental fuzz automata-viz
+all: baseline derivative incremental fuzz automata-viz modes tdfa code-dfa diagnostics roundtrip
 baseline: $(LEXER_BIN)
 derivative:
 	python scripts/build.py derivative
@@ -23,8 +23,18 @@ incremental:
 fuzz:
 	python scripts/build.py fuzz
 automata-viz:
-	python scripts/build.py automata-viz
-	python scripts/build.py automata-stats
+	python scripts/build.py automata-dot
+	python scripts/build.py automata
+modes:
+	python scripts/build.py modes
+tdfa:
+	python scripts/build.py tdfa
+code-dfa:
+	python scripts/build.py code-dfa
+diagnostics:
+	python scripts/build.py diagnostics
+roundtrip:
+	python scripts/build.py roundtrip
 benchmark:
 	python benchmarks/scripts/run_all_benchmarks.py
 figures:

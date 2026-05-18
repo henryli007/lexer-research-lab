@@ -1,0 +1,3 @@
+demo,input,input_bytes,matched,groups,tag_operations,elapsed_us
+float,123.45,6,true,2,4,1
+string,"hello\nworld",14,true,0,1,1

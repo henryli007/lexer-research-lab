@@ -1,3 +1,12 @@
+{"name":"rename_identifier_begin","type":"replace","offset":4,"length":9,"text":"value"}
 {"name":"rename_identifier_middle","type":"replace","offset":120,"length":9,"text":"counter"}
-{"name":"insert_comment_begin","type":"insert","offset":300,"length":0,"text":"/*"}
-{"name":"delete_comment_end","type":"delete","offset":420,"length":2,"text":""}
+{"name":"rename_identifier_end","type":"replace","offset":50000,"length":9,"text":"tail"}
+{"name":"insert_whitespace","type":"insert","offset":80,"length":0,"text":"   "}
+{"name":"delete_whitespace","type":"delete","offset":15,"length":1,"text":""}
+{"name":"insert_line_comment","type":"insert","offset":180,"length":0,"text":"// note\n"}
+{"name":"insert_block_comment_begin","type":"insert","offset":300,"length":0,"text":"/*"}
+{"name":"insert_block_comment_end","type":"insert","offset":420,"length":0,"text":"*/"}
+{"name":"delete_block_comment_end","type":"delete","offset":420,"length":2,"text":""}
+{"name":"replace_operator_equal_to_eqeq","type":"replace","offset":18,"length":1,"text":"=="}
+{"name":"malformed_number_edit","type":"replace","offset":20,"length":1,"text":"12abc"}
+{"name":"edit_near_file_end","type":"insert","offset":51000,"length":0,"text":" "}

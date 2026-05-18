@@ -1,0 +1,4 @@
+stage,states,edges,accept_states
+NFA,151,334,0
+DFA,66,2574,62
+MinDFA,65,2511,61

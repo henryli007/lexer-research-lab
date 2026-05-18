@@ -1,0 +1,5 @@
+file,input_bytes,tokens,printed_bytes,type_stable,lexeme_stable,elapsed_us,fail_reason
+D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\small.sy,1073,248,1072,true,true,11201,ok
+D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\medium.sy,53393,10968,53393,true,true,23221,ok
+D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\large.sy,1091152,212883,1091152,true,true,258486,ok
+D:\大三下\编译原理与技术\实验\大作业\lexer-research-lab\benchmarks\corpora\malformed_mixed.sy,54,7,0,false,false,0,source has diagnostics

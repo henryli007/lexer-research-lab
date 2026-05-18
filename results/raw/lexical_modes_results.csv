@@ -1,0 +1,3 @@
+file,mode_demo,input_bytes,tokens,mode_transitions,elapsed_us,throughput_mb_s,success
+template_demo.txt,template,32,6,2,22509,0.0013557523252120923,True
+cminus_comments.sy,cminus,47,8,2,27366,0.0016378911455546988,True

@@ -1,0 +1,6 @@
+#include "tdfa/TaggedDFA.h"
+#include <algorithm>
+#include <chrono>
+#include <fstream>
+#include <iostream>
+int main(int argc,char**argv){if(argc!=3){std::cerr<<"Usage: "<<argv[0]<<" --float value | --string value\n";return 1;}tdfa::TaggedDFA d;auto t0=std::chrono::high_resolution_clock::now();tdfa::TaggedMatch m=std::string(argv[1])=="--float"?d.matchFloat(argv[2]):d.matchString(argv[2]);auto us=std::max<long long>(1,std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now()-t0).count());std::ifstream chk("results/raw/tdfa_results.csv",std::ios::binary|std::ios::ate);bool empty=!chk||chk.tellg()==0;std::ofstream o("results/raw/tdfa_results.csv",std::ios::app);if(empty)o<<"demo,input,input_bytes,matched,groups,tag_operations,elapsed_us\n";o<<(std::string(argv[1])=="--float"?"float":"string")<<","<<argv[2]<<","<<std::string(argv[2]).size()<<","<<(m.matched?"true":"false")<<","<<m.groups.size()<<","<<m.tagOperations<<","<<us<<"\n";std::cout<<m.token<<"\n";if(m.token=="TOKEN_FLOAT")std::cout<<"integer_part = "<<m.groups[0]<<"\nfraction_part = "<<m.groups[1]<<"\ntag_operations = "<<m.tagOperations<<"\n";else std::cout<<"raw_content = "<<m.rawContent<<"\nescape_count = "<<m.escapePositions.size()<<"\n";}

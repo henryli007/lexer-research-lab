@@ -1,10 +1,7 @@
 # Experiment protocol
 
-Environment: local C++11 toolchain plus Python 3 and matplotlib. Build with `python scripts/build.py all`. Corpora are generated deterministically by `python benchmarks/scripts/generate_corpus.py`.
+Build with `python scripts/build.py all`; generate deterministic corpora with `python benchmarks/scripts/generate_corpus.py`; reproduce the whole study with `python benchmarks/scripts/run_all_benchmarks.py`.
 
-Metrics:
-- `throughput_mb_s = input_bytes / 1024 / 1024 / elapsed_seconds`
-- `speedup = full_lex_ms / incremental_lex_ms`
-- `reuse_rate = reused_tokens / total_old_tokens * 100`
+Metrics: `throughput_mb_s = bytes / 1024 / 1024 / seconds`; `speedup = full_lex_us / incremental_lex_us`; `reuse_rate = reused_tokens / total_old_tokens * 100`; `tag_operations` counts recorded TDFA tag writes; `type_stable` and `lexeme_stable` compare first- and second-pass token streams.
 
-Reproduce the full pipeline with `python benchmarks/scripts/run_all_benchmarks.py`, then regenerate figures with `python scripts/plot_paper_figures.py` and verify them with `python scripts/check_figures.py`.
+CSV families cover lexer performance, derivative mismatches, incremental cases/failures, property summaries, diagnostics, automata states, lexical modes, TDFA, code-DFA, diagnostic explanations, and roundtrip checks. All figures are regenerated from `results/raw/*.csv`.
